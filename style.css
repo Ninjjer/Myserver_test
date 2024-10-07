@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#magia{
+    display: flex;
+    overflow: scroll;
+    max-width: 1440px;
+    margin: auto;
+};
+
+.card-magia{
+    border: 1px solid #000;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px #000;
+    width: max-content;
+    padding: 8px 16px;
+};
+
+.card-magia header h2{
+    font-size: 24px;
+}
+
+.card-magia header p {
+    font-size: 18px;
+}
+
+select lista{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background: #2ecc71;
+    color: #fff;
+    border: 1px solid crimson;
+    padding: 4px;
+    border-radius: 9px;
+}
