@@ -2,13 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 #magia{
     display: flex;
-    overflow: scroll;
+
     max-width: 1440px;
     margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    
+
+    background-image: url('papel_wp.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 };
 
 .card-magia{
@@ -17,7 +27,31 @@
     box-shadow: 1px 1px 1px #000;
     width: max-content;
     padding: 8px 16px;
+    margin: 10px;
 };
+
+button[type="submit"] {
+
+    margin-left: auto; /* Move o botão para a direita */
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background-color: #4CAF50;
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+
+    background-color: #00ff08;
+
+}
 
 .card-magia header h2{
     font-size: 24px;
@@ -27,14 +61,10 @@
     font-size: 18px;
 }
 
-select lista{
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-family: cursive, sans-serif;
-    outline: 0;
-    background: #2ecc71;
-    color: #fff;
-    border: 1px solid crimson;
-    padding: 4px;
-    border-radius: 9px;
+.formulario{
+    display: inline;
+    position: relative;
+    top: 30px;
+    left: 12px;
 }
+

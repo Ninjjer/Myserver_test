@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Magias</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    
     <section id="magia">
+        
+
         <?php
 
             //funçao para redenrizar o template
@@ -20,49 +22,60 @@
             $usuario = 'root';
             $senha = '';
             $banco_de_dados = 'livro';
-
-            //criando um objeto dessa conexao
+           
+            //conectando ao banco de dados
             $connection = mysqli_connect($servidor, $usuario, $senha, $banco_de_dados);
 
-            /*
-            $consulta = $connection -> query('insert into magia(nome, elemento, conjuraçao, alvo, dano) values
-            ("Bola de fogo", "fogo", "fast", "area/3m", "3d12 + int")');  */
-
-            //var_dump($consulta);
-            /*
-            $select = $connection -> query('select * from magia');
-
-            $rowsMagias = $select -> fetch_all(MYSQLI_ASSOC);
-
-            $connection -> close();
-
-            foreach($rowsMagias as $magia){
-                renderTemplate($magia);
-            }
-            */
-
+            //funçao para dar select + where
             function call_lista($magia){
-            $where = $connection_where -> query('select * from magia where elemento = "fogo" ');
+            global $connection;
+            $where = $connection -> query("select * from magia where elemento = \"$magia\"");
+            $rowsMagias = $where -> fetch_all(MYSQLI_ASSOC);
             foreach($rowsMagias as $magia){
                 renderTemplate($magia);
+                }
             }
+            
+            if (isset($_GET['lista_magias'])) {
+                $select_magia = $_GET['lista_magias'];
+                call_lista($select_magia); 
             }
         ?>
-    </section>
-
-    <section>
+        <!--lista das magias que estao no banco de dados-->
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
         <select name="lista_magias" id="lista">
             <option value="fogo">Fogo</option>
             <option value="gelo">Gelo</option>
         </select>
-        <input type="submit" value="Selecionar" />
+        <input type="submit" value="Selecionar"/>
+
     </section>
-    
+
     <?php 
-        if (isset($_GET['magia'])) {
-            $select_magia = $_GET['magia'];
-            call_lista($select_);
+        include "formulario.php";
+        //$connection = mysqli_connect($servidor, $usuario, $senha, $banco_de_dados);
+        if (isset($_GET['nome']) && !empty($_GET['nome']) &&
+        isset($_GET['elemento']) && !empty($_GET['elemento']) &&
+        isset($_GET['conjuraçao']) && !empty($_GET['conjuraçao']) &&
+        isset($_GET['alvo']) && !empty($_GET['alvo']) &&
+        isset($_GET['dano']) && !empty($_GET['dano'])) {
+
+        $nome = $_GET['nome'];
+        $elemento = $_GET['elemento'];
+        $conjuraçao = $_GET['conjuraçao'];
+        $alvo = $_GET['alvo'];
+        $dano = $_GET['dano'];
+        
+        $insert = $connection -> query("insert into magia(nome, elemento, conjuraçao, alvo, dano) values ('$nome', '$elemento', '$conjuraçao', '$alvo', '$dano')");
+        
+        if ($insert) {
+            echo "Dados inseridos com sucesso!";
+        } else {
+            echo "Erro ao inserir dados: " . $connection->error;
+            }
         }
+        
+        $connection -> close();
     ?>
 
 </body>
