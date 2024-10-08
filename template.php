@@ -6,9 +6,6 @@
         <p>Alvo: <?= $magia["alvo"]; ?> </p>
         <p>Dano: <?= $magia["dano"]; ?> </p>
     </header>
-    <footer>
-        
-        <span>ID: <?= $magia["id"]; ?></span>
-    </footer>
+
 </div>
 

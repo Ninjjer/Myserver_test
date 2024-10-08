@@ -1,6 +1,6 @@
 <div class="formulario">
 
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get" id="form">
 
     <label for="nome">Nome:</label>
 
@@ -22,7 +22,7 @@
 
     <input type="text" id="dano" name="dano"><br><br>
 
-    <input type="submit" value="Adicionar Magia"/>
+    <input type="submit" value="Adicionar Magia" id="btn-enviar"/>
 
 </form>
 </div>
